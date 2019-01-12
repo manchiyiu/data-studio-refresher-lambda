@@ -1,30 +1,34 @@
-service: puppeteer-lambda-starter-kit
+service: slsDataStudioRefresher-${self:custom.name}
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs8.10
+  region: ${self:custom.config.region}
   memorySize: 1536
   timeout: 180
-  # if needed (e.g. upload snapshot)
-  # iamRoleStatements:
-  #  -  Effect: "Allow"
-  #     Action:
-  #       - "s3:PutObject"
-  #     Resource: "arn:aws:s3:::<bucket name>/*"  
+  environment:
+    URL: ${self:custom.config.url}
+    G_USERNAME: ${self:custom.config.g_username}
+    G_PASSWORD: ${self:custom.config.g_password}
+    RECOVERY_EMAIL: ${self:custom.config.recovery_email}
 
 functions:
-  test-function:
+  main:
     handler: index.handler
     environment:
       DEBUG: 0
+    events:
+      - schedule: ${self:custom.config.schedule}
 
 package:
   artifact: ./package.zip
-  
-plugins:
-  - serverless-hooks-plugin
 
 custom:
   hooks:
     package:initialize:
       - npm run package
+  name: ${opt:name, self:provider.name}
+  config: ${file(./serverless.config.${self:custom.name}.yml)}
+
+plugins:
+  - serverless-hooks-plugin
