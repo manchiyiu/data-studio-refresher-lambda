@@ -10,7 +10,7 @@ To add a new lambda for auto-refreshing a Google Data Studio Dashboard, please:
 
 - Create a Google account who is the editor for the dashboard;
 
-- Create a new serverless.config.<dashboard-name>.yml (clone from `serverless.config.template.yml`) in this directory. Fill in the dashboard URL, the schedule cron expression and the username, password and recovery email (in case Google rejected the login) for the account.
+- Create a new `serverless.config.<dashboard-name>.yml` (clone from `serverless.config.template.yml`) in this directory. Fill in the dashboard URL, the schedule cron expression and the username, password and recovery email (in case Google rejected the login) for the account.
 
 - Run the following commands:
 
