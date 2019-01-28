@@ -1,6 +1,6 @@
 region: # AWS region where the lambda should be deployed e.g. us-west-2
 url: # url of the Google Data Studio dashboard
 schedule: # rate(10 minutes) or cron([cron expression])
-g_username: # google account username
+g_username: # google account username (e.g. ???@gmail.com)
 g_password: # google account password
 recovery_email: # recovery email for the google account
