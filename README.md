@@ -4,6 +4,8 @@ This is a ready-to-deploy lambda that can refresh a Google Data Studio dashboard
 
 It is forked from [puppeteer-lambda-starter-kit](https://github.com/sambaiz/puppeteer-lambda-starter-kit).
 
+For details, please refer to my [medium post](https://medium.com/@ymcatar/visualization-on-steroid-using-headless-browser-to-auto-refresh-google-data-studio-dashboards-c195e68f10b).
+
 ## Instructions
 
 To add a new lambda for auto-refreshing a Google Data Studio Dashboard, please:
@@ -25,3 +27,9 @@ sls deploy --name <dashboard-name> --stage prod
 ```
 sls remove --name <dashboard-name> --stage prod
 ```
+
+- To test the script on your local machine and see the script running in Google Chrome:
+
+```
+SLOWMO_MS=50 URL=<dashboard URL> G_USERNAME=<google account email address> G_PASSWORD=<google account password> RECOVERY_EMAIL=<recovery email> npm run local
+``` 
